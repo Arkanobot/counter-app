@@ -73,7 +73,7 @@ export default function Cards({ title, value, index }) {
           }}
         />
         <CustomButton
-          name={"remove 1"}
+          name={"Remove 1"}
           onClick={() => {
             decrement();
           }}

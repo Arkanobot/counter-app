@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(cors());
 
 //establishing mongo db connection
-// const uri = "mongodb://127.0.0.1:27017/subscribers";
 const uri = process.env.MONGODB_URL;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 // Mongoose connection events

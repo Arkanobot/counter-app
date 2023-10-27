@@ -17,6 +17,10 @@ db.once("open", () => console.log("Database created..."));
 
 const refreshAll = async () => {
   await Counters.deleteMany({});
+  await Counters.insertMany({
+    name: "Shreyas",
+    counterArray: [{ counterName: "Shreyas", currentCount: 0 }],
+  });
   await mongoose.disconnect();
 };
 refreshAll();
