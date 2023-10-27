@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "./Cards";
 import { useEffect } from "react";
-import axios from "axios";
 import { setData } from "../redux/counterDataSlice";
 import Modal from "./Modal";
-import { link } from "./constants";
+import axios from "./axios";
 function Body() {
   //getting required data from redux store
   const name = useSelector((state) => state.name.name);
@@ -14,7 +13,7 @@ function Body() {
 
   //function to create a new counter
   function createCounter() {
-    axios.post(`${link}/counter-add/${name}`, {
+    axios.post(`/counter-add/${name}`, {
       counterName: inputVal,
       currentCount: 0,
     });
@@ -22,7 +21,7 @@ function Body() {
   //useEffect to fetch the data from the server when component loads
   useEffect(() => {
     try {
-      axios.get(`${link}/counters/${name}`).then((res) => {
+      axios.get(`/counters/${name}`).then((res) => {
         if (res.data.message !== "No data found") {
           dispatch(setData(res.data));
         }
@@ -36,7 +35,7 @@ function Body() {
   useEffect(() => {
     const interval = setInterval(() => {
       try {
-        axios.get(`${link}/counters/${name}`).then((res) => {
+        axios.get(`/counters/${name}`).then((res) => {
           if (res.data.message !== "No data found") {
             dispatch(setData(res.data));
           }

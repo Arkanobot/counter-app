@@ -3,8 +3,7 @@ import { TEInput } from "tw-elements-react";
 import CustomButton from "./CustomButton";
 import { setData } from "../redux/counterDataSlice";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { link } from "./constants";
+import axios from "./axios";
 export default function Cards({ title, value, index }) {
   const data = useSelector((state) => state.data.data);
   const name = useSelector((state) => state.name.name);
@@ -19,7 +18,7 @@ export default function Cards({ title, value, index }) {
     tempData[index] = tempObj;
     dispatch(setData(tempData));
     //request to increment the counter
-    axios.patch(`${link}/counter-mod/${name}`, {
+    axios.patch(`/counter-mod/${name}`, {
       id: tempObj._id,
       currentCount: tempObj.currentCount,
     });
@@ -34,7 +33,7 @@ export default function Cards({ title, value, index }) {
     tempData[index] = tempObj;
     dispatch(setData(tempData));
     //request to decrement the counter
-    axios.patch(`${link}/counter-mod/${name}`, {
+    axios.patch(`/counter-mod/${name}`, {
       id: tempObj._id,
       currentCount: tempObj.currentCount,
     });
@@ -47,7 +46,7 @@ export default function Cards({ title, value, index }) {
     let tempObj = tempData.splice(index, 1);
     dispatch(setData(tempData));
     //request to delete the counter
-    axios.patch(`${link}/counter-delete/${name}`, {
+    axios.patch(`/counter-delete/${name}`, {
       id: tempObj[0]._id,
     });
   }
