@@ -1,0 +1,26 @@
+{
+  "name": "backend-counter-app",
+  "version": "1.0.0",
+  "description": "Apis for counter app",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "start": "nodemon ./src/index.js",
+    "createDB": "node ./src/createDatabase.js"
+  },
+  "keywords": [
+    "Node",
+    "js"
+  ],
+  "author": "Shreyas Bhat K",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "nodemon": "^2.0.22",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3"
+  }
+}
